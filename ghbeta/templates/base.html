@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{% block titulo %}Base | ghbeta{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/media/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                </a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <br><br><br><br>
+
+    <!-- inicio div principal del contenido -->
+    <div class="container">
+        <header>
+             <h3>Sitio realestate</h3>
+        </header>
+        <section>
+    	<div class="row">
+    		<div class="col-md-8">
+    			<img  src="/media/images/nologo.png" alt="">
+    		</div>
+    		<div class="col-md-4">
+    			<h1>Este el h1</h1>
+    			<p>Este es un texoto en el párrafo</p>
+    		</div>
+    	</div>
+        </section>
+        <hr>
+        <!--  Seccion para links y mesahe de la empresa -->
+        <section>
+        <div class="row">
+            <div class="col-md-4">
+                <aside>
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#">Infonavit</a></li>
+                        <li><a href="#">Ayuntamiento Tijuana</a></li>
+                        <li><a href="#">Ayuntamiento Rosarito</a></li>
+                        <li><a href="#">Gobierno BC</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-md-8">
+                 {% block textoindex %}
+                     <article>
+                         <p>Bienvenido al sitio. En este sitio encontrarás información acerca de inmuebles que están a la venta y renta en la región. Además de conocer nuestra empresa y los servcios que ofrecemos.</p>
+
+                         <p>Ya sea que tengas la necesidad de vender, comprar o rentar alguna propiedad, este es el sitio correcto. Navega para que nos conozcas y ponte en contacto con nosotros en la sección Contacto.</p>
+                     </article>
+                 {% endblock %}
+            </div>
+        </div>
+        </section>
+        <hr>
+         
+         <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-8">
+                <!-- seccion para mostrar el catalogo de inmuebles -->
+                {% block catalogo %}
+                {% endblock %}
+            </div>
+         </div>
+         
+		 <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; ghbeta 2016 | Desarrollado por devcr</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+	 <!-- jQuery -->
+    <script src="/media/js/jquery-1.12.1.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/media/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block titulo %}ghbeta | Catálogo{% endblock %}
+{% block catalogo %}
+ <h3>Este es el archivio del catalogo</h3>
+   {% if catalogo %}
+     {% for cat in catalogo %}
+          <ul class="list-inline">
+               <li><strong> {{ cat.imagen }}</strong></li><br>
+                  <img class="thumbnail"  src="/media/{{ cat.imagen }}"  height="80" width="108" alt="...">
+               <li><a href="#"><span class="label label-primary">Detalles</span></a></li>
+          </ul>
+          <hr>
+     {% endfor %}
+   {% else  %}
+      <h3>No ha Inmuebles Para Publicar</h3>
+   {% endif %}
+   {% if catalogo %}
+     <a href="/catalogo/page/1"> << </a>
+  {% if productos.has_previous %}
+    <a href="/catalogo/page/{{productos.previous_page_number }}/"> Prev </a>
+  {% else %}
+    <a href="#"> Prev </a>
+  {% endif %}
+  {% if productos.has_next %}
+    <a href="/catalogo/page/{{productos.next_page_number }}/"> Next </a>
+  {% else %}
+    <a href="#"> Next </a>
+  {% endif %}
+    <a href="/catalogo/page/{{productos.paginator.num_pages}}"> >> </a>
+   {% endif %}
+{% endblock %}

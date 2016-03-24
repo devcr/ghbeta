@@ -2,25 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
 
-TIPOOPE_CHOICES = (
-	('Compra', 'Compra'),
-	('Renta', 'Renta'),
-	('Traspaso', 'Traspaso'),
-	('Venta', 'Venta'),
-)
 
-TIPOINMUEBLE_CHOICES = (
-	('Apartamento', 'Apartamento'),
-	('Casa', 'Casa'),
-	('Departamento', 'Departamento'),
-	('Local', 'Local'),
-	('Terreno', 'Terreno'),
-)
-
-TIPOMODNEDA_CHOICES = (
-	('US Dollar', 'US Dollar'),
-	('Pesos MX', 'Pesos MX'),
-)
 
 
 #class Moneda(models.Model):
@@ -44,6 +26,31 @@ TIPOMODNEDA_CHOICES = (
 	
 
 class Inmueble(models.Model):
+
+	TIPOOPE_CHOICES = (
+		('Compra', 'Compra'),
+		('Renta', 'Renta'),
+		('Traspaso', 'Traspaso'),
+		('Venta', 'Venta'),
+	)
+
+	TIPOINMUEBLE_CHOICES = (
+	('Apartamento', 'Apartamento'),
+	('Casa', 'Casa'),
+	('Departamento', 'Departamento'),
+	('Local', 'Local'),
+	('Terreno', 'Terreno'),
+	)
+
+	TIPOMODNEDA_CHOICES = (
+	('US Dollar', 'US Dollar'),
+	('Pesos MX', 'Pesos MX'),
+	)
+
+	def pathguardar( self, filename ):
+		infopath = "MultimediaData/Inmuebles/%s"%(filename)
+		return infopath
+
 	#usralta			= models.CharField('Usuario Alta', max_length=30)
 	encabezado		= models.TextField('encabezado',max_length=500)
 	tipoinmueble 	= models.CharField(max_length=25, choices=TIPOINMUEBLE_CHOICES, verbose_name='Tipo Inmueble')
@@ -71,6 +78,7 @@ class Inmueble(models.Model):
 	excedente		= models.DecimalField(max_digits=10,decimal_places=2,default=Decimal('0.00'))
 	comentarios		= models.TextField(max_length=500)
 	fecharegistro	= models.DateTimeField(auto_now_add=True)
+	imgportada		= models.ImageField(upload_to=pathguardar)
 	publicar		= models.BooleanField(default=True)
 
 	def __unicode__(self):
@@ -80,12 +88,12 @@ class Inmueble(models.Model):
 class Catalogoimg(models.Model):
 
 	def url(self,filename):
-		ruta = "MultimediaData/Inmueble/%s/%s"%(self.inmueble.id,filename)
+		nomimage = "%s-%s"%(self.inmueble.id, filename)
+		ruta = "MultimediaData/Inmuebles/%s"%(nomimage)#ruta = "MultimediaData/Inmuebles/%s/%s"%(self.inmueble.id,filename)
 		return ruta
 
 	inmueble 		= models.ForeignKey(Inmueble)
 	imagen			= models.ImageField(upload_to=url)
-	imgportada		= models.BooleanField(default=False, verbose_name='Usar Como Imagen de portada')
 
 	#def __unicode__(self):
 		#return self.inmueble.id

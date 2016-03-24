@@ -17,20 +17,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                    <!--<img src="http://placehold.it/150x50&text=Logo" alt="">-->
                 </a>
             </div>
             
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="{% url "index_vista" %}">Home</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="/catalogo/page/1/">Publicaciones</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{% url "contacto_vista" %}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -43,16 +43,21 @@
     <!-- inicio div principal del contenido -->
     <div class="container">
         <header>
-             <h3>Sitio realestate</h3>
+             <h1>Bienvenido a Ghbeta</h1>
         </header>
         <section>
     	<div class="row">
-    		<div class="col-md-8">
-    			<img  src="/media/images/nologo.png" alt="">
-    		</div>
     		<div class="col-md-4">
-    			<h1>Este el h1</h1>
-    			<p>Este es un texoto en el párrafo</p>
+    			<img  src="/media/images/No_logo.jpg" alt="">
+    		</div>
+    		<div class="col-md-8">
+                <article>
+    			<p>Bienvenido al sitio, aqui encontrarás información acerca de inmuebles que están a la venta y renta en la región. Además de conocer nuestra empresa y los servcios que ofrecemos.</p>
+
+                <p>Ya sea que tengas la necesidad de vender, comprar o rentar alguna propiedad, este es el sitio correcto. Navega para que nos conozcas y ponte en contacto con nosotros en la sección Contacto.</p>
+                </article>
+                
+                <a class="btn btn-primary btn-lg" href="{% url "contacto_vista" %}">Contacto</a>
     		</div>
     	</div>
         </section>
@@ -60,40 +65,43 @@
         <!--  Seccion para links y mesahe de la empresa -->
         <section>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <aside>
-                    <h3>Enlaces</h3>
+                    <div class="alert alert-info" role="alert"><strong>Enlaces</strong></div>
                     <ul>
-                        <li><a href="#">Infonavit</a></li>
-                        <li><a href="#">Ayuntamiento Tijuana</a></li>
-                        <li><a href="#">Ayuntamiento Rosarito</a></li>
-                        <li><a href="#">Gobierno BC</a></li>
+                        <li><a href="#">Link1</a></li>
+                        <li><a href="#">Link2</a></li>
+                        <li><a href="#">Link3</a></li>
+                        <li><a href="#">Link3</a></li>
+                    </ul>
+                </aside>
+                <hr>
+                <aside>
+                    <ul>
+                        <li><a href="/filtro/page/1/tipoinm/Apartamento/">Apartamentos</a></li>
+                        <li><a href="/filtro/page/1/tipoinm/Departamento/">Departamentos</a></li>
+                        <li><a href="/filtro/page/1/tipoinm/Casa/">Casas</a></li>
+                        <li><a href="/filtro/page/1/tipoinm/Local/">Locales Comerciales</a></li>
+                        <li><a href="/filtro/page/1/tipoinm/Terreno/">Terreno</a></li>
+                        <li><a href="/catalogo/page/1/">Todos</a></li>
+                    </ul>
+                </aside>
+                <hr>
+                <aside>
+                    <ul>
+                        <li><a href="/filtro/page/1/tipoope/Venta/">Inmuebles en Venta</a></li>
+                        <li><a href="/filtro/page/1/tipoope/Renta/">Inmuebles en Renta</a></li>
+                        <li><a href="/filtro/page/1/tipoope/Traspaso/">Inmuebles en Traspaso</a></li>
                     </ul>
                 </aside>
             </div>
-            <div class="col-md-8">
-                 {% block textoindex %}
-                     <article>
-                         <p>Bienvenido al sitio. En este sitio encontrarás información acerca de inmuebles que están a la venta y renta en la región. Además de conocer nuestra empresa y los servcios que ofrecemos.</p>
-
-                         <p>Ya sea que tengas la necesidad de vender, comprar o rentar alguna propiedad, este es el sitio correcto. Navega para que nos conozcas y ponte en contacto con nosotros en la sección Contacto.</p>
-                     </article>
+            <div class="col-md-9">
+                 {% block catalogo %}          
                  {% endblock %}
             </div>
         </div>
         </section>
-        <hr>
-         
-         <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-8">
-                <!-- seccion para mostrar el catalogo de inmuebles -->
-                {% block catalogo %}
-                {% endblock %}
-            </div>
-         </div>
-         
+
 		 <footer>
             <div class="row">
                 <div class="col-lg-12">

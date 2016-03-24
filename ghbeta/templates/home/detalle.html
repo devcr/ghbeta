@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block titulo %}Detalles | ghbeta{% endblock %}
+<hr>
+{% block catalogo %}
+    <div class="alert alert-info" role="alert">{{ registro.encabezado }} <strong>{{ registro.precio }} {{ registro.moneda }}</strong></div>
+     <!-- Inicio de galeria de imangenes -->
+     	<div class="row">
+            <!--<div class="col-lg-12">
+                <h3 class="page-header">Imágenes</h3>
+            </div>-->
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#">
+                    <img class="img-responsive" src="/media/{{registro.imgportada}}" alt="">
+                </a>
+            </div>	
+            {% for img in imgs %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#">
+                    <img class="img-responsive" src="/media/{{img.imagen}}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+               
+	
+	<div class="panel panel-default">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">El inmueble cuenta con las siguientes características:</div>
+		  <div class="panel-body">
+		    <p>{{ registro.comentarios }}</p>
+		  </div>
+		  <!-- List group -->
+		  <ul class="list-group">
+		    <li class="list-group-item"><strong>Dirección:</strong> {{ registro.direccion }}</li>
+			<li class="list-group-item"><strong>Recámaras:</strong> {{ registro.recamaras }}</li>
+			<li class="list-group-item"><strong>Baños:</strong> {{ registro.banos }}</li>
+			{% if registro.cocina %}
+		    	<li class="list-group-item"><strong>Vigilancia:</strong> {{ registro.vigilancia }}</li>
+		    {% endif %}
+		    {% if registro.cocina %}
+		    	<li class="list-group-item"><strong>Cocina</strong></li>
+		    {% endif %}
+		    {% if registro.sala %}	
+		    	<li class="list-group-item"><strong>Sala:</strong></li>
+		    {% endif %}
+		    {% if registro.cochera %}
+		    	<li class="list-group-item"><strong>cochera:</strong></li>
+		    {% endif %}
+		    {% if registro.jardin %}
+		    	<li class="list-group-item"><strong>Jardin</strong></li>
+		    {% endif %}
+		    {% if registro.mascotas %}
+		    	<li class="list-group-item"><strong>Se Aceptan Mascotas</strong></li>
+		    {% endif %}
+		    {% if registro.canchatenis %}
+		    	<li class="list-group-item"><strong>Cancha Tenis</strong></li>
+		    {% endif %}
+		    {% if registro.cargadescarga %}
+		    	<li class="list-group-item"><strong>Con Área de Carga/Descarga</strong></li>
+		    {% endif %}
+		    {% if registro.alberca %}
+		    	<li class="list-group-item"><strong>Alberca</strong></li>
+		    {% endif %}
+		    {% if registro.cuartolavado %}
+		    	<li class="list-group-item"><strong>Cuarto Lavado</strong></li>
+		    {% endif %}
+		    {% if registro.ac %}
+		    	<li class="list-group-item"><strong>Aire Acondicionado</strong></li>
+		    {% endif %}
+		    {% if registro.cuartotv %}
+		    	<li class="list-group-item"><strong>Cuarto de TV:</strong></li>
+		    {% endif %}
+		    {% if registro.amueblado %}
+		    	<li class="list-group-item"><strong>Amueblado:</strong></li>
+		    {% endif %}
+		    <li class="list-group-item"><strong>Terreno:</strong> {{ registro.terreno }}</li>
+		    <li class="list-group-item"><strong>Terreno Construcción:</strong> {{ registro.tconstruccion }}</li>
+		    <li class="list-group-item"><strong>Terreno Excedente:</strong> {{ registro.excedente }}</li>   
+		  </ul>
+	</div>
+	<a href="/catalogo/page/1/">Regresar al Catálogo</a>
+	<hr>
+{% endblock %}

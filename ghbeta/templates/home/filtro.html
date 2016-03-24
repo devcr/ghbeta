@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block titulo %}ghbeta | Catálogo{% endblock %}
+{% block titulo %}ghbeta | filtros{% endblock %}
 {% block catalogo %}
  <div class="alert alert-info" role="alert"><strong>Publicaciones</strong></div>
-   {% if catalogo %}
-     {% for cat in catalogo %}
-     <div class="row">
+   {% if registros %}
+     {% for cat in registros %}
+      <div class="row">
         <div class="col-md-3">
           <img class="thumbnail"  src="/media/{{ cat.imgportada }}"  height="80" width="108" alt="...">
         </div>
@@ -13,32 +13,32 @@
                <li><strong> {{ cat.encabezado }}</strong></li><br>
                <li>{{cat.direccion}}</li>
                <li><strong>Terreno:</strong>{{ cat.terreno }}<strong> Baños:</strong>{{ cat.banos }}<strong> Recámaras:</strong>{{ cat.recamaras }}</li><br>
-               <li><p>{{ cat.comentarios }}</p></li><br>
+               <li><p>{{ cat.comentarios }}</p></li><br>    
                <li><a href="/detalle/registro/{{cat.id}}"><span class="label label-primary">Detalles</span></a></li>
           </ul>
-          </div>
-     </div>
-     <hr>
+        </div>
+      </div>
+          <hr>
      {% endfor %}
    {% else  %}
       <h3>No hay Inmuebles Para esta categoría</h3>
    {% endif %}
    <!--  Incia seccion del paginador -->
-   {% if catalogo %}
+   {% if registros %}
       <nav>
         <ul class="pagination">
           <li>
-            <a href="/catalogo/page/1/" aria-label="Previous">
+            <a href="/filtro/page/1/{{categoria}}/{{cadfiltro}}" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
-          {% for numpag in catalogo.paginator.page_range %}
+          {% for numpag in registros.paginator.page_range %}
             <li>
-              <a href="/catalogo/page/{{numpag}}">{{ numpag }}</a>
+              <a href="/filtro/page/{{numpag}}/{{categoria}}/{{cadfiltro}}">{{ numpag }}</a>
             </li>
           {% endfor %} 
           <li>
-            <a href="/catalogo/page/{{ catalogo.paginator.num_pages }}" aria-label="Next">
+            <a href="/filtro/page/{{ registros.paginator.num_pages }}/{{categoria}}/{{cadfiltro}}" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
             </a>
           </li>
